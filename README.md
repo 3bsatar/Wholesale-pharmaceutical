@@ -1,6 +1,3 @@
-Certainly! Here's the complete README content as a single markdown code block for easy copying:
-
-```markdown
 # Wholesale Pharmaceutical Project
 
 This project is a wholesale system for pharmaceutical products, built using Node.js.
