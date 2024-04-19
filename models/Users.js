@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ['superAdmin', 'wholesaleAdmin', 'apiUser'], // Defines the types of roles available
+        enum: ['superAdmin', 'wholesaleAdmin', 'apiUser'], 
         default: 'apiUser'
     },
     isActive: {
@@ -25,10 +25,8 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // Additional fields can be added here depending on your specific requirements
 });
 
-// Hash password before saving if it's modified
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
 
@@ -41,7 +39,6 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-// Method to check if the provided password matches the hashed password in the database
 userSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };

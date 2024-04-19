@@ -4,19 +4,20 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { connectDatabase } = require("./config/db");
 
-// connect to database
 connectDatabase(process.env.MONGO_URI);
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 
-// User defined Middleware
 app.use("/auth",require("./routes/authRouter"));
+
+
+app.use('/products', require("./routes/productRouter"));
+
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
