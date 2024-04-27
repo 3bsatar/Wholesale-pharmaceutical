@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const User = require('../models/Users'); 
+const createJwt = require('../helpers/createJwt')
 router.use(bodyParser.json());
 
 router.post('/register', async (req, res) => {
@@ -49,7 +50,8 @@ router.post('/register', async (req, res) => {
             return res.status(401).json({ message: "Invalid password." });
         }
 
-        res.status(200).json({ message: "Login successful." });
+        const token = createJwt(user.id,user.role,"1d");
+        res.status(200).json({ message: "Login successful.",token});
     } catch (error) {
         res.status(500).json({ message: "Server error during login.", error: error.message });
     }
