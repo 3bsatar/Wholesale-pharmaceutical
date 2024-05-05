@@ -15,7 +15,7 @@ This project is a wholesale system for pharmaceutical products, built using Node
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/wholesale-pharmaceutical.git
+   git clone https://github.com/3bsatar/Wholesale-pharmaceutical.git
    ```
 
 2. Install dependencies:
